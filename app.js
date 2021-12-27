@@ -38,9 +38,6 @@ button.addEventListener('click', getMovieData);
 
 
 
-// to dos
-// when pressing bars, give two buttons, TOP 50 movies, TOP TV shows. 
-//Display top 50 movies or TOP TV SHows in index page result section.
 
 
 
