@@ -2,7 +2,11 @@ const input = document.querySelector('#input');
 const mainTag = document.querySelector('#main');
 const movieTitle = document.getElementById('movie-title');
 const imagesDiv = document.querySelector('.movies');
-const button = document.querySelector('button')
+const button = document.querySelector('button');
+const bars = document.querySelector('.fa-bars');
+const cross = document.querySelector('.fa-times');
+const withNav = document.querySelector('.with-nav');
+const normalView = document.querySelector('.normal-view');
 const apiKey = 'k_czik298u';
 
 
@@ -11,7 +15,6 @@ async function getMovieData() {
   const receivedData = await response.json();
   displayImages(receivedData.results);
 };
-
 
 const displayImages = (array) => {
   imagesDiv.innerHTML = '';
@@ -25,14 +28,23 @@ const displayImages = (array) => {
     pTag.innerText = result.title.toUpperCase();
     div.appendChild(imageTag);
     div.appendChild(pTag);
-    imagesDiv.appendChild(div)
-
+    imagesDiv.appendChild(div);
   });
 }
 
+
+
+
 button.addEventListener('click', getMovieData);
+bars.addEventListener('click',()=>{
+  withNav.style.display = 'flex';
+  normalView.style.display = 'none';
+});
 
-
+cross.addEventListener('click',()=>{
+  normalView.style.display = 'block';
+  withNav.style.display = 'none';
+})
 
 
 
