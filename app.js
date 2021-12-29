@@ -13,6 +13,7 @@ const apiKey = 'k_czik298u';
 async function getMovieData() {
   const response = await fetch(`https://imdb-api.com/en/API/SearchMovie/${apiKey}/${input.value}`);
   const receivedData = await response.json();
+  console.log(receivedData)
   displayImages(receivedData.results);
 };
 
@@ -36,6 +37,7 @@ const displayImages = (array) => {
 
 
 button.addEventListener('click', getMovieData);
+
 bars.addEventListener('click',()=>{
   withNav.style.display = 'flex';
   normalView.style.display = 'none';

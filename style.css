@@ -73,15 +73,25 @@ footer{
 
 .with-nav{
   display: none;
-  justify-content: flex-end;
+  justify-content: space-between;
+  flex-direction: column;
+  align-content: center;
   padding-right: 10px;
   padding-top: 10px;
 }
 
-.cross{
-  /* height: 10vh; */
-  justify-self: flex-start;
-  align-self: flex-end;
+
+.logo-with-nav{
+  display: flex;
+  justify-content: space-between;
 }
 
+.buttons{
+  display: flex;
+  justify-content: center;
+}
+
+.buttons button{
+  margin: 10px;
+}
 
