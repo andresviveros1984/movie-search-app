@@ -2,3 +2,4 @@
 // to dos
 // when pressing bars, give two buttons, TOP 50 movies, TOP TV shows. 
 //Display top 50 movies or TOP TV SHows in index page result section.
+// top 50 buttons need to be on top of each other

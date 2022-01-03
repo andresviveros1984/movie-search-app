@@ -2,7 +2,7 @@ const input = document.querySelector('#input');
 const mainTag = document.querySelector('#main');
 const movieTitle = document.getElementById('movie-title');
 const imagesDiv = document.querySelector('.movies');
-const button = document.querySelector('button');
+const button = document.querySelector('.search-input button');
 const bars = document.querySelector('.fa-bars');
 const cross = document.querySelector('.fa-times');
 const withNav = document.querySelector('.with-nav');
@@ -13,7 +13,7 @@ const apiKey = 'k_czik298u';
 async function getMovieData() {
   const response = await fetch(`https://imdb-api.com/en/API/SearchMovie/${apiKey}/${input.value}`);
   const receivedData = await response.json();
-  console.log(receivedData)
+  
   displayImages(receivedData.results);
 };
 
