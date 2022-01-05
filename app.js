@@ -47,18 +47,18 @@ async function getTopFiftyMovies() {
 }
 
 const displayTop50Movies = (array) => {
-  imagesDiv.innerHTML = '';
+  top50Container.innerHTML = '';
   array.forEach(result => {
     const div = document.createElement('div');
     const imageTag = document.createElement('img');
     const pTag = document.createElement('p');
-    div.className = "movie";
+    div.className = "top-film";
     imageTag.src = result.image;
     pTag.id = 'title';
     pTag.innerText = result.title.toUpperCase();
     div.appendChild(imageTag);
     div.appendChild(pTag);
-    imagesDiv.appendChild(div);
+    top50Container.appendChild(div);
   });
 }
 
@@ -79,6 +79,7 @@ cross.addEventListener('click',()=>{
   normalView.style.display = 'block';
   withNav.style.display = 'none';
   top50Container.style.display = 'none';
+  top50Container.innerHTML = ''
 })
 
 
