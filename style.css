@@ -97,3 +97,24 @@ footer{
   margin: 10px;
 }
 
+
+.top-50{
+  display: none;
+  /* border: 2px solid red; */
+  justify-content: space-between;
+}
+
+/* .top-50-films{
+  border: 2px solid blue;
+  display: flex;
+  justify-content: space-around;
+
+} */
+
+.top-film{
+  height: 150px;
+  width: 150px;
+  display: flex;
+  border: 2px solid green;
+}
+
