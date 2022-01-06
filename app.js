@@ -52,7 +52,7 @@ const displayTop50Movies = (array) => {
     const div = document.createElement('div');
     const imageTag = document.createElement('img');
     const pTag = document.createElement('p');
-    div.className = "top-film";
+    div.className = "movie";
     imageTag.src = result.image;
     pTag.id = 'title';
     pTag.innerText = result.title.toUpperCase();
