@@ -40,7 +40,7 @@ const displayImages = (array) => {
 async function getTopFiftyMovies() {
   const response = await fetch(`https://imdb-api.com/en/API/${topFiftyMoviesBTN.id}/k_czik298u`);
   const receivedData = await response.json();
-    for(let i =0;i<=50;i++){
+    for(let i =0;i<50;i++){
       top50Movies.push(receivedData.items[i]);
     }
     displayTop50Movies(top50Movies);
@@ -63,7 +63,7 @@ const displayTop50Movies = (array) => {
 }
 
 
-topFiftyMoviesBTN.addEventListener('click', getTopFiftyMovies)
+topFiftyMoviesBTN.addEventListener('click', getTopFiftyMovies);
 
 
 
@@ -79,7 +79,7 @@ cross.addEventListener('click',()=>{
   normalView.style.display = 'block';
   withNav.style.display = 'none';
   top50Container.style.display = 'none';
-  top50Container.innerHTML = ''
+  top50Container.innerHTML = '';
 })
 
 
