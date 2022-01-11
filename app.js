@@ -46,8 +46,25 @@ async function getTopFiftyMovies() {
     displayTop50Movies(top50Movies);
 }
 
+// const displayTop50Movies = (array) => {
+//   top50Container.innerHTML = '';
+//   array.forEach(result => {
+//     const div = document.createElement('div');
+//     const imageTag = document.createElement('img');
+//     const pTag = document.createElement('p');
+//     div.className = "movie";
+//     imageTag.src = result.image;
+//     pTag.id = 'title';
+//     pTag.innerText = result.title.toUpperCase();
+//     div.appendChild(imageTag);
+//     div.appendChild(pTag);
+//     top50Container.appendChild(div);
+//   });
+// }
+
+
 const displayTop50Movies = (array) => {
-  top50Container.innerHTML = '';
+  imagesDiv.innerHTML = '';
   array.forEach(result => {
     const div = document.createElement('div');
     const imageTag = document.createElement('img');
@@ -58,10 +75,11 @@ const displayTop50Movies = (array) => {
     pTag.innerText = result.title.toUpperCase();
     div.appendChild(imageTag);
     div.appendChild(pTag);
-    top50Container.appendChild(div);
+    imagesDiv.appendChild(div);
   });
+  withNav.innerHTML = '';
+  normalView.style.display = 'block'; // last code written, need to be able to click on bars to display nav again
 }
-
 
 topFiftyMoviesBTN.addEventListener('click', getTopFiftyMovies);
 
