@@ -77,10 +77,12 @@ const displayTop50Movies = (array) => {
     div.appendChild(pTag);
     imagesDiv.appendChild(div);
   });
-  withNav.innerHTML = '';
+  withNav.style.display = 'none'; 
   normalView.style.display = 'block'; // last code written, need to be able to click on bars to display nav again
 }
 
+
+//put loading until images displayed
 topFiftyMoviesBTN.addEventListener('click', getTopFiftyMovies);
 
 
