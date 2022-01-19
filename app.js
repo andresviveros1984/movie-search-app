@@ -20,50 +20,18 @@ async function getMovieData() {
 };
 
 
-const displayImages = (array) => {
-  imagesDiv.innerHTML = '';
-  array.forEach(result => {
-    const div = document.createElement('div');
-    const imageTag = document.createElement('img');
-    const pTag = document.createElement('p');
-    div.className = "movie";
-    imageTag.src = result.image;
-    pTag.id = 'title';
-    pTag.innerText = result.title.toUpperCase();
-    div.appendChild(imageTag);
-    div.appendChild(pTag);
-    imagesDiv.appendChild(div);
-  });
-}
-
-
 async function getTopFiftyMovies() {
   const response = await fetch(`https://imdb-api.com/en/API/${topFiftyMoviesBTN.id}/k_czik298u`);
   const receivedData = await response.json();
     for(let i =0;i<50;i++){
       top50Movies.push(receivedData.items[i]);
     }
-    displayTop50Movies(top50Movies);
+    displayImages(top50Movies)
 }
 
-// const displayTop50Movies = (array) => {
-//   top50Container.innerHTML = '';
-//   array.forEach(result => {
-//     const div = document.createElement('div');
-//     const imageTag = document.createElement('img');
-//     const pTag = document.createElement('p');
-//     div.className = "movie";
-//     imageTag.src = result.image;
-//     pTag.id = 'title';
-//     pTag.innerText = result.title.toUpperCase();
-//     div.appendChild(imageTag);
-//     div.appendChild(pTag);
-//     top50Container.appendChild(div);
-//   });
-// }
 
-
-const displayTop50Movies = (array) => {
+const displayImages = (array) => {
+  console.log(array)
   imagesDiv.innerHTML = '';
   array.forEach(result => {
     const div = document.createElement('div');
@@ -78,14 +46,12 @@ const displayTop50Movies = (array) => {
     imagesDiv.appendChild(div);
   });
   withNav.style.display = 'none'; 
-  normalView.style.display = 'block'; // last code written, need to be able to click on bars to display nav again
+  normalView.style.display = 'block';
 }
 
-
 //put loading until images displayed
+// topFiftyMoviesBTN.addEventListener('click', getTopFiftyMovies);
 topFiftyMoviesBTN.addEventListener('click', getTopFiftyMovies);
-
-
 
 button.addEventListener('click', getMovieData);
 
