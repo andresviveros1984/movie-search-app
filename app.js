@@ -9,8 +9,11 @@ const withNav = document.querySelector('.with-nav');
 const top50Container = document.querySelector('.top-50');
 const normalView = document.querySelector('.normal-view');
 const topFiftyMoviesBTN = document.querySelector('#Top250Movies');
+const topFiftyTVShowsBTN = document.querySelector('#top-tv');
+const spinner = document.querySelector('.spinner');
 const apiKey = 'k_czik298u';
 const top50Movies =[];
+const top50TVShows = [];
 
 
 async function getMovieData() {
@@ -26,12 +29,21 @@ async function getTopFiftyMovies() {
     for(let i =0;i<50;i++){
       top50Movies.push(receivedData.items[i]);
     }
-    displayImages(top50Movies)
-}
+    displayImages(top50Movies);
+};
+
+async function getTopFiftyTVShows() {
+  const response = await fetch(`https://imdb-api.com/en/API/Top250TVs/k_czik298u`);
+  const receivedData = await response.json();
+    for(let i =0;i<50;i++){
+      top50TVShows.push(receivedData.items[i]);
+    }
+    
+    displayImages(top50TVShows);
+};
 
 
 const displayImages = (array) => {
-  console.log(array)
   imagesDiv.innerHTML = '';
   array.forEach(result => {
     const div = document.createElement('div');
@@ -47,11 +59,22 @@ const displayImages = (array) => {
   });
   withNav.style.display = 'none'; 
   normalView.style.display = 'block';
+};
+
+function displaySpinner() {
+  let imgTag = document.createElement('img')
+  imgTag.src = './images/loading.gif';
+  spinner.appendChild(imgTag);
 }
 
 //put loading until images displayed
 // topFiftyMoviesBTN.addEventListener('click', getTopFiftyMovies);
 topFiftyMoviesBTN.addEventListener('click', getTopFiftyMovies);
+topFiftyTVShowsBTN.addEventListener('click',getTopFiftyTVShows);
+
+
+button.addEventListener('click',displaySpinner);
+
 
 button.addEventListener('click', getMovieData);
 
@@ -65,8 +88,7 @@ cross.addEventListener('click',()=>{
   normalView.style.display = 'block';
   withNav.style.display = 'none';
   top50Container.style.display = 'none';
-  top50Container.innerHTML = '';
-})
+});
 
 
 
