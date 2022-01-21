@@ -18,10 +18,7 @@ const top50TVShows = [];
 
 async function getMovieData() {
   imagesDiv.innerHTML = '';
-  let imgTag = document.createElement('img');
-  imgTag.id = 'loader';
-  imgTag.src = './images/loading.gif';
-  imagesDiv.appendChild(imgTag);
+  displayLoader();
   const response = await fetch(`https://imdb-api.com/en/API/SearchMovie/${apiKey}/${input.value}`);
   const receivedData = await response.json();
   imagesDiv.innerHTML = '';
@@ -30,15 +27,25 @@ async function getMovieData() {
 
 
 async function getTopFiftyMovies() {
+  withNav.style.display ='none';
+  normalView.style.display ='block';
+  imagesDiv.innerHTML = '';
+  displayLoader();
   const response = await fetch(`https://imdb-api.com/en/API/${topFiftyMoviesBTN.id}/k_czik298u`);
   const receivedData = await response.json();
     for(let i =0;i<50;i++){
       top50Movies.push(receivedData.items[i]);
     }
+    imagesDiv.innerHTML = '';
+    // setTimeout(displayImages(top50Movies),5000);
     displayImages(top50Movies);
 };
 
 async function getTopFiftyTVShows() {
+  withNav.style.display ='none';
+  normalView.style.display ='block';
+  imagesDiv.innerHTML = '';
+  displayLoader();
   const response = await fetch(`https://imdb-api.com/en/API/Top250TVs/k_czik298u`);
   const receivedData = await response.json();
     for(let i =0;i<50;i++){
@@ -67,8 +74,9 @@ const displayImages = (array) => {
   normalView.style.display = 'block';
 };
 
-function displaySpinner() {
+function displayLoader() {
   let imgTag = document.createElement('img');
+  imgTag.id = 'loader';
   imgTag.src = './images/loading.gif';
   imagesDiv.appendChild(imgTag);
 }
