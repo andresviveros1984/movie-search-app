@@ -10,15 +10,21 @@ const top50Container = document.querySelector('.top-50');
 const normalView = document.querySelector('.normal-view');
 const topFiftyMoviesBTN = document.querySelector('#Top250Movies');
 const topFiftyTVShowsBTN = document.querySelector('#top-tv');
-const spinner = document.querySelector('.spinner');
+
 const apiKey = 'k_czik298u';
 const top50Movies =[];
 const top50TVShows = [];
 
 
 async function getMovieData() {
+  imagesDiv.innerHTML = '';
+  let imgTag = document.createElement('img');
+  imgTag.id = 'loader';
+  imgTag.src = './images/loading.gif';
+  imagesDiv.appendChild(imgTag);
   const response = await fetch(`https://imdb-api.com/en/API/SearchMovie/${apiKey}/${input.value}`);
   const receivedData = await response.json();
+  imagesDiv.innerHTML = '';
   displayImages(receivedData.results);
 };
 
@@ -62,9 +68,9 @@ const displayImages = (array) => {
 };
 
 function displaySpinner() {
-  let imgTag = document.createElement('img')
+  let imgTag = document.createElement('img');
   imgTag.src = './images/loading.gif';
-  spinner.appendChild(imgTag);
+  imagesDiv.appendChild(imgTag);
 }
 
 //put loading until images displayed
@@ -73,7 +79,7 @@ topFiftyMoviesBTN.addEventListener('click', getTopFiftyMovies);
 topFiftyTVShowsBTN.addEventListener('click',getTopFiftyTVShows);
 
 
-button.addEventListener('click',displaySpinner);
+
 
 
 button.addEventListener('click', getMovieData);
